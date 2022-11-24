@@ -5,9 +5,21 @@
     <a v-for="(메뉴,index) in 메뉴들" :key="index">{{메뉴}}</a>
   </div>
 
-  <div v-for="(룸,index) in 룸들" :key="index">
-      <h4>{{룸}}</h4>
-      <h4>{{(index+20) * 2}}만원</h4>
+
+  <div>
+    <h4 class="red" :style="스타일">{{products[0]}} 원룸</h4>
+    <h4>50 만원</h4>
+    <button @click="increase(0)">허의매물신고</button> <span>신고수 : {{ 신고수 }}</span>
+  </div>
+  <div>
+    <h4>{{products[1]}} 원룸</h4>
+    <h4>70 만원</h4>
+    <button @click="increase(1)">허의매물신고</button> <span>신고수 : {{ 신고수 }}</span>
+  </div>
+  <div>
+    <h4>{{products[2]}} 원룸</h4>
+    <h4>20 만원</h4>
+    <button @click="increase(2)">허의매물신고</button> <span>신고수 : {{ 신고수 }}</span>
   </div>
 </div>
 </template>
@@ -20,11 +32,19 @@ export default {
   name: 'App',
   data(){
     return {
-      스타일 : 'color : blue',
+      신고수 : [0,0,0],
+      스타일 : 'color : grey',
       메뉴들 : ['Home' , 'Shop' , 'About'],
-      룸들 : ['역삼동원룸' , '천호동원룸' , '마포구원룸'],
+      products : ['역삼동원룸' , '천호동원룸' , '마포구원룸'],
     }
   },
+  methods: {
+    increase(n){
+      this.신고수[n] += 1;
+    }
+  },
+
+
   components: {
   }
 }
