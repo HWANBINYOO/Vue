@@ -1,24 +1,6 @@
 # vuedongsan
 
-## Project setup
-```
-yarn install
-```
+{{데이터바인딩}} 하는 이유
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. 하드코딩해놓으면 나중에 변경 어려움
+2. 실시간 자동 렌더링
