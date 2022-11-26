@@ -8,6 +8,14 @@
 </div>
 </template>
 
+<script>
+import "element-plus/dist/index.css"
+
+export default {
+  
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
