@@ -1,4 +1,5 @@
 <template>
+<div>
 <el-row>
   <el-col :span="2"> </el-col>
     <el-col :span="20">
@@ -15,6 +16,11 @@
         </el-table>
     </el-col>
 </el-row>
+
+ <a href="/board/write" class="write_btn">
+    <img src="/images/pen_icon.png" />
+  </a>
+</div>  
 </template>
 
 <script>
@@ -41,3 +47,24 @@ export default {
   },
 }
 </script>
+
+<style>
+.write_btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50px;
+    background: #fc1f49;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    display: inline-block;
+}
+.write_btn img {
+    position: relative;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -55%);
+}
+</style>
