@@ -32,7 +32,7 @@ export default {
       articles : null,
     }
   },
-  mounted() {
+  mounted() { //요소들이 화면에 표시될 준비가 완료되면 실행되는 event 핸들러
     apiBoard.getArticles(0)
       .then((res) => {
         console.log("getArticles", res);

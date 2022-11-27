@@ -8,7 +8,7 @@
                         <el-button type="text" class="left-button">Back</el-button>
                     </router-link>
 
-                    <span>게시물 올리기</span>
+                    <span>{{getTitle}}</span>
 
                     <el-button @click="writeArticle" type="text" class="right-button">저장</el-button>
                 </div>
@@ -54,10 +54,46 @@ export default {
         };
     },
 
+    computed: {
+        getTitle(){
+            if(this.$route.params.id) return "게시글 수정하기";
+            return "게시글 작성하기";
+        }
+    },
+
+    mounted() {
+        if (this.$route.params.id) {
+            apiBoard
+                .getArticle(this.$route.params.id)
+                .then((response) => {
+                    console.log("getArticle", response);
+                    this.title = response.data.title;
+                    this.body = response.data.body;
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        }
+    },
+
     methods: {
         writeArticle() {
             if ((!this.title) || (!this.body)) {
                 this.$message.error("제목과 본문을 작성해주세요.");
+                return;
+            }
+
+            if (this.$route.params.id) {
+                apiBoard
+                    .patchArticle(this.$route.params.id, this.title, this.body)
+                    .then((response) => {
+                        console.log(response);
+                        this.$router.push({path: `/board/detail/${this.$route.params.id}`});
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                        this.$message.error("게시물 수정 중 에러가 발생하였습니다.");
+                    });
                 return;
             }
 

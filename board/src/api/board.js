@@ -20,4 +20,11 @@ export default {
             body: body,
         });
     },
+
+    patchArticle: function (id, title, body) {
+        return axios.patch(BASE_URL + `posts${id}`, {
+            title: title,
+            body: body,
+        });
+    },
 }
